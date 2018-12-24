@@ -1,2 +1,2 @@
 # Finance
-Program z GUI za vodenje osebnih financ
+Program z GUI za vodenje osebnih financ. 
