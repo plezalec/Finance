@@ -2,8 +2,6 @@
 #V Qt designerju narediš grob osnutek, potem ga shraniš kot .ui in ga pretvoriš po navodilih v .py potem narediš ---Spremembe.py file kot  je ta za spremembe
 
 import sys
-import os
-import site
 from QtOkno import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -22,3 +20,13 @@ def dodajMenije(self, i):
     self.neki.setText(_translate("MainWindow", "NEKI " + a))
 
 
+
+
+
+app = QtWidgets.QApplication(sys.argv)
+MainWindow = QtWidgets.QMainWindow()
+ui = Ui_MainWindow()
+ui.setupUi(MainWindow)
+funkcija(ui)
+MainWindow.show()
+sys.exit(app.exec_())

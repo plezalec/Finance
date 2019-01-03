@@ -1,4 +1,7 @@
 Èe se npr. .ui datoteka imenuje QtOkno odpri cmd(shift+desni klik -> izberi Okno lupine PowerShell odpri tukaj) v datoteki kjer je ui in izvedi to spodaj
 
-
+QtOkno:
 pyuic5 -x "C:\Users\Pavel\Documents\Business\Finance\Finance\QtOkno.ui" -o "C:\Users\Pavel\Documents\Business\Finance\Finance\QtOkno.py"
+
+Tabela:
+pyuic5 -x "C:\Users\Pavel\Documents\Business\Finance\Finance\Tabela.ui" -o "C:\Users\Pavel\Documents\Business\Finance\Finance\Tabela.py"
