@@ -3,17 +3,11 @@ from dveTabeli import Ui_Form
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-def tabela(self,frame, st_vrstic, st_stolpcev, vrstice_imena, stolpci_imena, vrednosti):
+def tabela(self,tableWidget, st_vrstic, st_stolpcev, vrstice_imena, stolpci_imena, vrednosti):
     ##Odvisnost od self.frame, in postavitve v frame
-    self.tableWidget = QtWidgets.QTableWidget(frame)
-    self.tableWidget.setGeometry(QtCore.QRect(20, 30, 256, 192))
-    self.tableWidget.setObjectName("tableWidget")
-    self.tableWidget.setColumnCount(st_stolpcev)
-    self.tableWidget.setRowCount(st_vrstic)
+    tableWidget.setColumnCount(st_stolpcev)
+    tableWidget.setRowCount(st_vrstic)
 
-    self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame)
-    self.horizontalLayout.addWidget(self.tableWidget)
-    self.horizontalLayout.addWidget(self.frame)
 
     for i in range(st_vrstic):
         item = QtWidgets.QTableWidgetItem()
@@ -69,8 +63,8 @@ ui.setupUi(Form)
 
 
 
-tabela(ui,ui.frame,2, 2, ['2', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
-tabela(ui,ui.frame_2,2, 2, ['1', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
+tabela(ui,ui.tableWidget,2, 2, ['2', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
+tabela(ui,ui.tableWidget_2,2, 2, ['1', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
 
 Form.show()
 sys.exit(app.exec_())
