@@ -7,30 +7,38 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from QtFunkcije import *
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1026, 790)
+
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
         self.toolButton_2 = QtWidgets.QToolButton(self.centralwidget)
         self.toolButton_2.setObjectName("toolButton_2")
         self.horizontalLayout.addWidget(self.toolButton_2)
+
         self.toolButton = QtWidgets.QToolButton(self.centralwidget)
         self.toolButton.setObjectName("toolButton")
         self.horizontalLayout.addWidget(self.toolButton)
+
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
+
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_2.setObjectName("gridLayout_2")
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -54,12 +62,15 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.gridLayout_2.addWidget(self.comboBox, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame_2)
+
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
+
         self.gridLayout = QtWidgets.QGridLayout(self.frame)
         self.gridLayout.setObjectName("gridLayout")
+
         self.tableWidget = QtWidgets.QTableWidget(self.frame)
         self.tableWidget.setEnabled(True)
         self.tableWidget.setSizeIncrement(QtCore.QSize(0, 0))
@@ -69,6 +80,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(3)
+
+
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -115,6 +128,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1026, 26))
         self.menubar.setObjectName("menubar")
@@ -145,7 +159,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuPredloge.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.comboBox.activated['QString'].connect(self.tableWidget.clear)
+
+        self.comboBox.activated['QString'].connect(self.fun())
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -199,7 +214,8 @@ class Ui_MainWindow(object):
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
         self.actionNakupi_v_trgovini.setText(_translate("MainWindow", "Nakupi v trgovini"))
         self.actionBele_enje_polo_nic.setText(_translate("MainWindow", "Beleženje položnic"))
-
+    def fun(self):
+        sys.exit
 
 if __name__ == "__main__":
     import sys
@@ -207,6 +223,10 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    a=QtFunkcije()
+    #a.tabela(ui.tableWidget, 2, 2, ['2', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
+    #a.akcija(ui.comboBox,ui.tableWidget)
+    #ui.comboBox.activated['QString'].connect(ui.fun())
     MainWindow.show()
     sys.exit(app.exec_())
 

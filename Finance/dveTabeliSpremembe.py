@@ -4,36 +4,25 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 def tabela(tableWidget, st_vrstic, st_stolpcev, vrstice_imena, stolpci_imena, vrednosti):
-    ##Odvisnost od self.frame, in postavitve v frame
+    #nastavi se število vrstic instolpcev
     tableWidget.setColumnCount(st_stolpcev)
     tableWidget.setRowCount(st_vrstic)
-
-
+    #kreira se vrstice, stolpce in polja
     for i in range(st_vrstic):
         item = QtWidgets.QTableWidgetItem()
         tableWidget.setHorizontalHeaderItem(i, item)
     for i in range(st_stolpcev):
         item = QtWidgets.QTableWidgetItem()
         tableWidget.setVerticalHeaderItem(i, item)
-
     for i in range(st_vrstic):
         for j in range(st_stolpcev):
             item = QtWidgets.QTableWidgetItem()
             tableWidget.setItem(i, j, item)
-
+    #Default višina stolpcev
     tableWidget.verticalHeader().setDefaultSectionSize(25)
     tableWidget.verticalHeader().setMinimumSectionSize(25)
-
-    #self.gridLayout = QtWidgets.QGridLayout(self.frame)
-    #self.gridLayout.setObjectName("gridLayout")
-    #self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
-
-
-
-
+    #translate
     _translate = QtCore.QCoreApplication.translate
-
-    tableWidget.setSortingEnabled(True)
 
     for i in range(st_vrstic):
         item = tableWidget.verticalHeaderItem(i)
@@ -43,7 +32,7 @@ def tabela(tableWidget, st_vrstic, st_stolpcev, vrstice_imena, stolpci_imena, vr
         item.setText(_translate("Form", stolpci_imena[i]))
 
     __sortingEnabled = tableWidget.isSortingEnabled()
-    tableWidget.setSortingEnabled(False)
+    tableWidget.setSortingEnabled(True)
 
     for i in range(st_vrstic):
         for j in range(st_stolpcev):

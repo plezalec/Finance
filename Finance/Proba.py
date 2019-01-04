@@ -1,55 +1,39 @@
-#https://www.youtube.com/watch?v=ksW59gYEl6Q
+import sys
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 
 
+class Window(QtWidgets.QWidget):
 
-# -*- coding: utf-8 -*-
+    def __init__(self):
+        super().__init__()
 
-# Form implementation generated from reading ui file 'C:\Users\Pavel\Documents\Business\Untitled.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
+        self.init_ui()
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+    def init_ui(self):
+        self.b = QtWidgets.QPushButton('Push Me')
+        self.l = QtWidgets.QLabel('I have not been clicked yet')
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(240, 40, 187, 57))
-        self.pushButton.setObjectName("pushButton")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        h_box = QtWidgets.QHBoxLayout()
+        h_box.addStretch()
+        h_box.addWidget(self.l)
+        h_box.addStretch()
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        v_box = QtWidgets.QVBoxLayout()
+        v_box.addWidget(self.b)
+        v_box.addLayout(h_box)
 
-        self.pushButton.clicked.connect(self.printMessage)
+        self.setLayout(v_box)
+        self.setWindowTitle('PyQt5 Lesson 5')
 
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Print Message"))
+        self.b.clicked.connect(self.btn_click)
 
-    def printMessage(self):
-        print("Hello World!")
+        self.show()
+
+    def btn_click(self):
+        self.l.setText('I have been clicked')
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-
+app = QtWidgets.QApplication(sys.argv)
+a_window = Window()
+sys.exit(app.exec_())
