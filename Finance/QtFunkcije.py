@@ -86,5 +86,7 @@ class QtFunkcije:
             Stack.addWidget(w[i])
 
         return  Stack,a.nastej_tabele()
+
+
 if __name__ == "__main__":
     pass
