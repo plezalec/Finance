@@ -5,16 +5,15 @@ from PyQt5 import QtCore
 from QtFunkcije import QtFunkcije
 from SQLFunkcije import SQLFunkcije
 
-class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
+class DodajElementTabele(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
     def __init__(self):
         super().__init__()  # call constructor of parent class
-
         self.init_ui()
 
     def init_ui(self):
+
         self.setWindowTitle('Dodaj element')
         self.setWindowIcon(QtGui.QIcon('slika.png'))
-        self.setGeometry(100, 100, 300, 300)
 
         self.b1=QtWidgets.QPushButton('Dodaj')
         self.b2 = QtWidgets.QPushButton('Shrani')
@@ -60,8 +59,9 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
 
         self.b3.clicked.connect(self.onActivated1)
 
+    def dodaj_st(self,st):
+        self.setGeometry(0,35+st*338, 800, 300)
 
-        self.show()
 
     def onActivated(self,text):
         if text!='Izberi tabelo elementa...':
@@ -97,5 +97,6 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
             b.deleteLater()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    a_window = Window()
+    a_window = DodajElementTabele()
+    a_window.show()
     sys.exit(app.exec_())
