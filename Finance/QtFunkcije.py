@@ -71,6 +71,7 @@ class QtFunkcije:
     def combo_box_add_items(self,combo,items):
         for i in range(len(items)):
             combo.addItem(items[i])
+
     def dodaj(self,str):
         a = SQLFunkcije('FinanceDataBase.db')
         pr = a.nastej_tabele()
@@ -87,6 +88,36 @@ class QtFunkcije:
 
         return  Stack,a.nastej_tabele()
 
+    def dodaj_vrstico_za_vnos(self,tabela):
+        vrstica=QtWidgets.QVBoxLayout()
+        zgoraj=QtWidgets.QHBoxLayout()
+        spodaj=QtWidgets.QHBoxLayout()
+        vrstica.addLayout(zgoraj)
+        vrstica.addLayout(spodaj)
+        b=[]
+        l=[]
+        a=SQLFunkcije('FinanceDataBase.db')
+        stolpci=a.nastej_stolpce(tabela)
+        for i in range(len(stolpci)):
+            b.append(QtWidgets.QLineEdit())
+            l.append(QtWidgets.QLabel(stolpci[i]))
+            spodaj.addWidget(b[-1])
+            zgoraj.addWidget(l[-1])
+        return vrstica,b,l
+
+    def odstrani_vrstico_za_vnos(self,a,c):
+        for i in range(len(a)):
+            b=a[i]
+            b.deleteLater()
+            b = c[i]
+            b.deleteLater()
+
+    #def dodaj_stack(self):
+
+    #def odstrani_stack(self):
+
+    def razvrsti_okno(self,st):
+        self.setGeometry(0,35+st*338, 800, 300)
 
 if __name__ == "__main__":
     pass
