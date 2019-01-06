@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QDesktopWidget
 
 from DodajElementTabele import DodajElementTabele
 
-class Window(QtWidgets.QWidget,QtFunkcije,SQLFunkcije):#extend QWidgets
+class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
 
     def __init__(self):
         super().__init__()#call constructor of parent class

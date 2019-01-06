@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from SQLFunkcije import SQLFunkcije
+from SQLFunkcije import *
 
 
 class QtFunkcije:

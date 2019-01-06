@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtGui#za slike
 from PyQt5 import QtCore
 from QtFunkcije import QtFunkcije
-from SQLFunkcije import SQLFunkcije
+from SQLFunkcije import *
 
 class DodajElementTabele(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
     def __init__(self):

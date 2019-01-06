@@ -1,0 +1,1 @@
+Prvi stolpec vsake tabele je serijska številka
