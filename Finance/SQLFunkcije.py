@@ -84,9 +84,20 @@ class DataBase():
         '''
         self.database_name=database
         self.database=SQLFunkcije(self.database_name)
+        self.beri_podatke()
 
-        self.imena_tabel=self.imena_tabel_init()
-        self.tabele=self.tabele_init()
+
+    def beri_podatke(self):
+        self.imena_tabel = self.imena_tabel_init()
+        self.tabele = self.tabele_init()
+
+    def beri_imena_tabel_in_stolpce(self):
+
+        self.imena_tabel = self.imena_tabel_init()
+        self.tabele = []
+        for i in range(len(self.imena_tabel_init())):
+            self.tabele.append(Tabela(self.imena_tabel_init()[i], self.database_name))
+            self.tabele[-1].beri_stolpce()
 
     def imena_tabel_init(self):
         '''
@@ -106,7 +117,14 @@ class DataBase():
         tabele=[]
         for i in range(len(self.imena_tabel_init())):
             tabele.append(Tabela(self.imena_tabel_init()[i],self.database_name))
+            tabele[-1].beri_podatke()
         return tabele
+
+    def dodaj_tabelo(self,tabela):
+        self.imena_tabel.append(tabela)
+        self.tabele.append(Tabela(tabela,self.database_name))
+        self.tabele[-1].imena_stolpcev.append('ID')
+        self.tabele[-1].stolpci.append(Stolpec('ID',tabela,self.database_name))
 
 class Tabela():
     def __init__(self,tabela,database):
@@ -119,14 +137,26 @@ class Tabela():
         self.database_name=database
         self.database=SQLFunkcije(self.database_name)
         self.tabela=tabela
+        self.imena_stolpcev=[]
+        self.stolpci=[]
+        self.vrstice=[]
+        self.st_vr=0
+    def beri_podatke(self):
         self.imena_stolpcev=self.imena_stolpcev_init()
+        self.imena_vrstic = self.imena_vrstic_init()
         self.vrstice=self.vrstice_init()
         self.stolpci= self.stolpci_init()
-        
+        self.st_vr=len(self.vrstice)
+    def beri_stolpce(self):
+        self.imena_stolpcev = self.imena_stolpcev_init()
 
     def imena_stolpcev_init(self):
         imena_stolpcev=self.database.nastej_stolpce(self.tabela)
         return imena_stolpcev
+    def imena_vrstic_init(self):
+        ime_stolpca = self.database.nastej_stolpce(self.tabela)[0]
+        imena_vrstic=self.database.preberi_stolpec(self.tabela,ime_stolpca)
+        return imena_vrstic
     def polja(self):
         polja=self.database.preberi_tabelo(self.tabela)
         return polja
@@ -142,12 +172,23 @@ class Tabela():
             p.append(Stolpec('PoselID',self.tabela,self.database_name))
         return p
 
-    def dodaj_vrstico(self):
-        self.vrstice.append(Vrstica(self.vrstice[-1].ID+1,self.tabela,self.database))
+    def dodaj_vrstico(self,vrednosti='None'):
+        ID=self.st_vr+1
+        self.vrstice.append(Vrstica(ID,self.tabela,self.database_name))
+        self.st_vr+=1
+        for i in range(len(self.imena_stolpcev)-1):
+            if vrednosti!='None':
+                self.vrstice[-1].vrednosti_vrstice.append(vrednosti[i])
+            else:
+                self.vrstice[-1].vrednosti_vrstice.append('None')
+
 
     def dodaj_stolpec(self,stolpec):
         self.stolpci.append(Stolpec(stolpec,self.tabela,self.database))
         self.imena_stolpcev.append(stolpec)
+        for i in range(self.st_vr):
+            self.stolpci[-1].vrednosti_stolpca.append('None')
+            self.vrstice[i].vrednosti_vrstice.append('None')
 
 class Vrstica():
     def __init__(self,ID,tabela,database):
@@ -155,25 +196,30 @@ class Vrstica():
         self.tabela=tabela
         self.database=database
         self.data=SQLFunkcije(self.database)
-        print(self.ID)
-    def vrednosti_vrstice(self):
-        vrednosti_vrstice=self.data.preberi_vrstico(self.tabela,self.ID)
-        return vrednosti_vrstice
+        self.vrednosti_vrstice=[ID]
+    def preberi_vrstico(self):
+        self.vrednosti_vrstice=self.data.preberi_vrstico(self.tabela,self.ID)
 class Stolpec():
     def __init__(self,stolpec,tabela,database):
         self.stolpec=stolpec
         self.tabela=tabela
         self.database=database
-        self.data=SQLFunkcije(self.database)
-    def vrednosti_stolpca(self):
-        vrednosti_stolpca = self.data.preberi_stolpec(self.tabela,self.stolpec)
-        return vrednosti_stolpca
+
+        self.vrednosti_stolpca=[]
+    def vrednosti_st(self):
+        self.data = SQLFunkcije(self.database)
+        self.vrednosti_stolpca = self.data.preberi_stolpec(self.tabela,self.stolpec)
+
 if __name__ == "__main__":
     a=SQLFunkcije('FinanceDataBase.db')
     d=DataBase('FinanceDataBase.db')
     t=Tabela('Posel','FinanceDataBase.db')
     v=Vrstica(2,'Posel','FinanceDataBase.db')
     s=Stolpec('PoselID','Posel','FinanceDataBase.db')
-
     print(d.imena_tabel)
-    print(d.tabele[-1].imena_stolpcev)
+    d.dodaj_tabelo('hrana')
+    print(d.imena_tabel)
+    d.tabele[-1].dodaj_vrstico()
+    d.tabele[-1].dodaj_stolpec('burek')
+
+    print(d.tabele[-1].vrstice[0].vrednosti_vrstice)

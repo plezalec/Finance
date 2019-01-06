@@ -40,6 +40,7 @@ class DodajElementTabele(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
         self.hlo3 = QtWidgets.QVBoxLayout()
         # layout
         self.vlo4 = QtWidgets.QVBoxLayout()
+
         #layout
         self.lo= QtWidgets.QVBoxLayout()
         self.lo.addLayout(self.hlo1)
@@ -61,8 +62,10 @@ class DodajElementTabele(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
             [self.lo1,self.text1,self.lab]=self.dodaj_vrstico_za_vnos(text)
             self.hlo3.addLayout(self.lo1)
 
-            [self.stack, self.tabele] = self.stacked('FinanceDataBase.db')
+            [self.stack, self.tabele] = self.stacked_DataBase('FinanceDataBase.db')
             self.vlo4.addWidget(self.stack)
+
+            #self.vlo4.addWidget(self.tabela_vnos('Posel'))
             self.stack.setCurrentIndex(self.tabele.index(text))
     def b5Akcija(self):
         self.b3.setDisabled(True)
