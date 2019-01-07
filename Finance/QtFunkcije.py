@@ -59,6 +59,8 @@ class QtFunkcije:
         __sortingEnabled = tableWidget.isSortingEnabled()
         tableWidget.setSortingEnabled(True)
 
+        tableWidget.horizontalHeader().setDefaultSectionSize(155)
+        tableWidget.horizontalHeader().setMinimumSectionSize(155)
         for i in range(st_vrstic):
             for j in range(st_stolpcev):
                 item = tableWidget.item(i, j)
@@ -108,6 +110,8 @@ class QtFunkcije:
         #Default višina stolpcev
         tableWidget.verticalHeader().setDefaultSectionSize(25)
         tableWidget.verticalHeader().setMinimumSectionSize(25)
+        tableWidget.horizontalHeader().setDefaultSectionSize(155)
+        tableWidget.horizontalHeader().setMinimumSectionSize(155)
         #translate
         _translate = QtCore.QCoreApplication.translate
         for i in range(st_vrstic):
@@ -151,7 +155,7 @@ class QtFunkcije:
     def stacked_DataBase(self,database):
         Stack = QtWidgets.QStackedWidget()
         database=DataBase('FinanceDataBase.db')
-        database.beri_podatke()
+        database.beri_imena_tabel_in_stolpce()
         tabele=database.tabele
         w=[]
 
@@ -175,6 +179,7 @@ class QtFunkcije:
             l.append(QtWidgets.QLabel(stolpci[i]))
             spodaj.addWidget(b[-1])
             zgoraj.addWidget(l[-1])
+            l[-1].setMinimumWidth(150)
         return vrstica,b,l
 
     def odstrani_vrstico_za_vnos(self,a,c):

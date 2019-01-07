@@ -138,6 +138,7 @@ class Tabela():
         self.database=SQLFunkcije(self.database_name)
         self.tabela=tabela
         self.imena_stolpcev=[]
+        self.imena_vrstic= []
         self.stolpci=[]
         self.vrstice=[]
         self.st_vr=0
