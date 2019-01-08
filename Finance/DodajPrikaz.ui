@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>526</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0,0,0,0,0,0">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Dodaj stolpec:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Filter:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Filter:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Izvorna tabela:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QComboBox" name="comboBox_3">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Izberi filter....</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Vsi elementi</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Prazna tabela</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_4">
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Filter:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="9">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>Dodaj še en filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="maximumSize">
+          <size>
+           <width>120</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Dodaj še en filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="8">
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="maximumSize">
+          <size>
+           <width>120</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Dodaj še en filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="10">
+        <widget class="QPushButton" name="pushButton_11">
+         <property name="text">
+          <string>Izbriši stolpec</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10">
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>Izbriši filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="10">
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="text">
+          <string>Izbriši filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QComboBox" name="comboBox_7">
+         <item>
+          <property name="text">
+           <string>Izberi filter...</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Filter:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="9">
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="text">
+          <string>Dodaj stolpec</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLabel" name="label_3">
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Prikaži:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7">
+        <widget class="QComboBox" name="comboBox_6">
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Da</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ne</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="10">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="maximumSize">
+          <size>
+           <width>120</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Dodaj stolpec</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QComboBox" name="comboBox_4">
+         <item>
+          <property name="text">
+           <string>Vse</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="8">
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="text">
+          <string>Dodaj še en filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QComboBox" name="comboBox_5">
+         <item>
+          <property name="text">
+           <string>Izberi filter...</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_9">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Izberi stolpec...</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox_8">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Izberi tabelo...      </string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+      <zorder>label</zorder>
+      <zorder>label_4</zorder>
+      <zorder>comboBox_3</zorder>
+      <zorder>comboBox_5</zorder>
+      <zorder>label_5</zorder>
+      <zorder>label_2</zorder>
+      <zorder>label_6</zorder>
+      <zorder>comboBox_4</zorder>
+      <zorder>label_3</zorder>
+      <zorder>comboBox_6</zorder>
+      <zorder>pushButton_7</zorder>
+      <zorder>pushButton_8</zorder>
+      <zorder>pushButton_11</zorder>
+      <zorder>pushButton_9</zorder>
+      <zorder>pushButton_10</zorder>
+      <zorder>pushButton_5</zorder>
+      <zorder>pushButton_2</zorder>
+      <zorder>pushButton_4</zorder>
+      <zorder>pushButton_3</zorder>
+      <zorder>label_7</zorder>
+      <zorder>comboBox_7</zorder>
+      <zorder>comboBox_9</zorder>
+      <zorder>comboBox_8</zorder>
+     </widget>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1000</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTableWidget" name="tableWidget">
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>6</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Stolpec 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Stolpec2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Stolpec3</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Shrani pogled</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>Prekliči</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>comboBox_8</tabstop>
+  <tabstop>comboBox_3</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>comboBox_5</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>comboBox_9</tabstop>
+  <tabstop>comboBox_4</tabstop>
+  <tabstop>comboBox_6</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButton_8</tabstop>
+  <tabstop>pushButton_11</tabstop>
+  <tabstop>comboBox_7</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

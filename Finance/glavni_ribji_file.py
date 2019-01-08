@@ -7,6 +7,8 @@ from SQLFunkcije import SQLFunkcije
 from PyQt5.QtWidgets import QDesktopWidget
 
 from DodajElementTabele import DodajElementTabele
+from DodajPredlogo import DodajPredlogo
+from DodajPrikaz import DodajPrikaz
 
 class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
 
@@ -20,6 +22,12 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
         self.b=QtWidgets.QPushButton('Dodaj element tabele')
         self.b.setToolTip('Dodaj element tabele')
         self.b.clicked.connect(self.onActivated1)
+
+        self.b1 = QtWidgets.QPushButton('Dodaj predlogo')
+        self.b1.clicked.connect(self.dodaj_predlogo)
+        self.b2 = QtWidgets.QPushButton('Dodaj prikaz')
+        self.b2.clicked.connect(self.dodaj_prikaz)
+
         #combo box
         self.cb=QtWidgets.QComboBox()
         self.combo_box_add_items(self.cb,self.dodaj('Prikaži tabelo...'))
@@ -34,6 +42,8 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
         #hbox4
         self.hbox4 = QtWidgets.QHBoxLayout()
         self.hbox4.addWidget(self.b)
+        self.hbox4.addWidget(self.b1)
+        self.hbox4.addWidget(self.b2)
         self.hbox4.addStretch()
         self.hbox4.addWidget(self.cb)
         #vbox
@@ -48,6 +58,12 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
         self.setLayout(self.vbox)
         self.dialogs=list()
         self.st_dialogs=0
+        self.dodaj_pr = DodajPredlogo()
+
+        self.dodaj_prikaz = QtWidgets.QMainWindow()
+        ui = DodajPrikaz()
+        ui.setupUi(self.dodaj_prikaz)
+
 
     def onActivated1(self):
         dialog=DodajElementTabele()
@@ -55,11 +71,17 @@ class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
         self.dialogs.append(dialog)
         dialog.show()
         self.st_dialogs+=1
+        if self.st_dialogs>=3:
+            self.st_dialogs-=3
 
     def onActivated(self,text):
         if text in self.tabele:
             self.stack.setCurrentIndex(self.tabele.index(text))
 
+    def dodaj_predlogo(self):
+        self.dodaj_pr.show()
+    def dodaj_prikaz(self):
+        self.dodaj_prikaz.show()
 if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)

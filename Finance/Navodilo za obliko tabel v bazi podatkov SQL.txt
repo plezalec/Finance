@@ -1,1 +1,2 @@
 Prvi stolpec vsake tabele je serijska številka
+Drugi stolpec je to pod èemer bodo znane vrednosti referenc (ime)

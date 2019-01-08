@@ -30,6 +30,7 @@ class SQLFunkcije():
         a=cursor.fetchone()
         return a
 
+
     def preberi_stolpec(self,tabela, stolpec):
         cursor=self.cursor()
         cursor.execute('SELECT ' + stolpec + ' FROM ' + tabela)
@@ -71,6 +72,7 @@ class SQLFunkcije():
         b=len(ID)
         c=self.preberi_tabelo(tabela)
         return [a]
+
 
 
 class DataBase():
@@ -139,15 +141,21 @@ class Tabela():
         self.tabela=tabela
         self.imena_stolpcev=[]
         self.imena_vrstic= []
-        self.stolpci=[]
         self.vrstice=[]
         self.st_vr=0
+        self.parent = []
+        self.parent_stolpec = []
+        self.key_stolpec = []
+        self.stolpci=[]
+
+
     def beri_podatke(self):
         self.imena_stolpcev=self.imena_stolpcev_init()
         self.imena_vrstic = self.imena_vrstic_init()
         self.vrstice=self.vrstice_init()
-        self.stolpci= self.stolpci_init()
         self.st_vr=len(self.vrstice)
+        #self.nastej_kljuce_tabele()
+        self.stolpci= self.stolpci_init()
     def beri_stolpce(self):
         self.imena_stolpcev = self.imena_stolpcev_init()
 
@@ -167,10 +175,19 @@ class Tabela():
             p.append(Vrstica(i,self.tabela,self.database_name))
         return p
     def stolpci_init(self):
+
         p = []
         stolpci=self.imena_stolpcev
         for i in range(len(stolpci)):
-            p.append(Stolpec('PoselID',self.tabela,self.database_name))
+
+            if stolpci[i] in self.key_stolpec:
+                a=self.key_stolpec.index(stolpci[i])
+
+                p.append(Stolpec(stolpci[i], self.tabela, self.database_name,self.parent[a]))
+                p[-1].vrednosti_st()
+                a+=1
+            else:
+                p.append(Stolpec(stolpci[i],self.tabela,self.database_name))
         return p
 
     def dodaj_vrstico(self,vrednosti='None'):
@@ -190,7 +207,16 @@ class Tabela():
         for i in range(self.st_vr):
             self.stolpci[-1].vrednosti_stolpca.append('None')
             self.vrstice[i].vrednosti_vrstice.append('None')
+    def poveži_kljuce_tabele(self):
+        cursor = self.database.cursor()
+        cursor.execute('PRAGMA foreign_key_list('+self.tabela+')')
 
+        a = cursor.fetchall()
+
+        for i in range(len(a)):
+            self.parent.append(list(a[i])[2])
+            self.key_stolpec.append(list(a[i])[3])
+            self.parent_stolpec.append(list(a[i])[4])
 class Vrstica():
     def __init__(self,ID,tabela,database):
         self.ID=ID
@@ -201,26 +227,81 @@ class Vrstica():
     def preberi_vrstico(self):
         self.vrednosti_vrstice=self.data.preberi_vrstico(self.tabela,self.ID)
 class Stolpec():
-    def __init__(self,stolpec,tabela,database):
+    def __init__(self,stolpec,tabela,database,parent=[None]):
+        self.parent=parent
+
+
         self.stolpec=stolpec
         self.tabela=tabela
         self.database=database
 
         self.vrednosti_stolpca=[]
-    def vrednosti_st(self):
+        self.vrednosti_st()
+
+    def vrednosti(self,stolpec_za_prikaz=None):
         self.data = SQLFunkcije(self.database)
         self.vrednosti_stolpca = self.data.preberi_stolpec(self.tabela,self.stolpec)
+        #print(self.vrednosti_stolpca)
+        if self.parent!=[None]:
+            #print('-------------------------------------------')
+            #print(self.parent)
+            #print(self.stolpec)
+            self.parent_tabela=Tabela(self.parent,self.database)
+            self.parent_tabela.beri_podatke()
+            self.ime_parent_IDstolpec=self.parent_tabela.imena_stolpcev[0]
+            #print(self.ime_parent_IDstolpec)
+            self.parent_IDstolpec=Stolpec(self.ime_parent_IDstolpec,self.parent,self.database)
+            self.parent_IDstolpec.vrednosti_st()
+            self.parent_tabela_vrednosti_ID_stolpca=self.parent_IDstolpec.vrednosti_stolpca
+            if stolpec_za_prikaz!=None:
+                self.drug_stolpec=Stolpec(stolpec_za_prikaz,self.parent,self.database)
+            else:
+                self.drug_stolpec=Stolpec(self.parent_tabela.imena_stolpcev[1],self.parent,self.database)
+            self.drug_stolpec.vrednosti_st()
+            #print(self.vrednosti_stolpca)
+            #print(self.parent_tabela_vrednosti_ID_stolpca)
+            self.nove=self.drug_stolpec.vrednosti_stolpca
+            #print(self.nove)
+            #self.parent=[None]# ???? mogoče je to treba !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            for i in range(len(self.vrednosti_stolpca)):
+                if self.vrednosti_stolpca[i]!='None':
+                    mesto=self.parent_tabela_vrednosti_ID_stolpca.index(self.vrednosti_stolpca[i])
+                    self.vrednosti_stolpca[i]=str(self.nove[mesto]).replace('\'','')
+
+                    #print(self.vrednosti_stolpca)
+            #print(self.vrednosti_stolpca[i])
+
+            #print(self.tabela)
+            #print(self.stolpec)
+            #print(self.parent_tabela.tabela)
+            #print(self.parent_IDstolpec.stolpec)
+            #print()
+
+    def  vrednosti_st(self):
+        self.vrednosti()
+
+    #def pridobi_parent(self):
+    #    cursor = self.database.cursor()
+    #    cursor.execute('PRAGMA foreign_key_list('+self.tabela+')')
+
+     #   a = cursor.fetchall()
+
+      #  for i in range(len(a)):
+       #     self.parent.append(list(a[i])[2])
+        #    self.key_stolpec.append(list(a[i])[3])
+         #   self.parent_stolpec.append(list(a[i])[4])
+
 
 if __name__ == "__main__":
     a=SQLFunkcije('FinanceDataBase.db')
     d=DataBase('FinanceDataBase.db')
-    t=Tabela('Posel','FinanceDataBase.db')
+    tabele=d.imena_tabel
+    for i in range(len((tabele))):
+        t=Tabela(tabele[i],'FinanceDataBase.db')
+        t.poveži_kljuce_tabele()
+        t.beri_podatke()
+        for j in range(len(t.imena_stolpcev)):
+
+            print(t.stolpci[j].vrednosti_stolpca)
     v=Vrstica(2,'Posel','FinanceDataBase.db')
     s=Stolpec('PoselID','Posel','FinanceDataBase.db')
-    print(d.imena_tabel)
-    d.dodaj_tabelo('hrana')
-    print(d.imena_tabel)
-    d.tabele[-1].dodaj_vrstico()
-    d.tabele[-1].dodaj_stolpec('burek')
-
-    print(d.tabele[-1].vrstice[0].vrednosti_vrstice)

@@ -129,6 +129,73 @@ class QtFunkcije:
                 item.setText(_translate("Form", vrednosti[i][j]))
         return tableWidget
 
+    def tabela_priredba(self,tab,database):
+
+        '''
+
+        :param tabela: SQLFunkcije.py class Tabela
+        :return:
+
+
+        :param st_vrstic:
+        :param st_stolpcev:
+        :param vrstice_imena:
+        :param stolpci_imena:
+        :param vrednosti:
+        '''
+        tabela=Tabela(tab,database)
+        tabela.poveži_kljuce_tabele()
+        tabela.beri_podatke()
+        stolpci_imena=tabela.imena_stolpcev
+        st_stolpcev=len(stolpci_imena)
+        st_vrstic=tabela.st_vr
+        #tabela.stolpci[1].vrednosti_st()
+
+
+        vrstice_imena=tabela.imena_vrstic
+        vrednosti=[]
+
+        for i in range(len(tabela.stolpci)):
+            vrednosti.append(tabela.stolpci[i].vrednosti_stolpca)
+        vrednosti=list(map(list, zip(*vrednosti)))
+
+
+
+        tableWidget = QtWidgets.QTableWidget()
+        tableWidget.setColumnCount(st_stolpcev)
+        tableWidget.setRowCount(st_vrstic)
+        #kreira se vrstice, stolpce in polja
+        for i in range(st_stolpcev):
+            item = QtWidgets.QTableWidgetItem()
+            tableWidget.setHorizontalHeaderItem(i, item)
+        for i in range(st_vrstic):
+            item = QtWidgets.QTableWidgetItem()
+            tableWidget.setVerticalHeaderItem(i, item)
+        for i in range(st_vrstic):
+            for j in range(st_stolpcev):
+                item = QtWidgets.QTableWidgetItem()
+                tableWidget.setItem(i, j, item)
+        #Default višina stolpcev
+        tableWidget.verticalHeader().setDefaultSectionSize(25)
+        tableWidget.verticalHeader().setMinimumSectionSize(25)
+        tableWidget.horizontalHeader().setDefaultSectionSize(155)
+        tableWidget.horizontalHeader().setMinimumSectionSize(155)
+        #translate
+        _translate = QtCore.QCoreApplication.translate
+        for i in range(st_vrstic):
+            item = tableWidget.verticalHeaderItem(i)
+            item.setText(_translate("Form", vrstice_imena[i]))
+        for i in range(st_stolpcev):
+            item = tableWidget.horizontalHeaderItem(i)
+            item.setText(_translate("Form", stolpci_imena[i]))
+        __sortingEnabled = tableWidget.isSortingEnabled()
+        tableWidget.setSortingEnabled(True)
+
+        for i in range(st_vrstic):
+            for j in range(st_stolpcev):
+                item = tableWidget.item(i, j)
+                item.setText(_translate("Form", vrednosti[i][j]))
+        return tableWidget
     def akcija(self,comboBox,tableWidget):
         comboBox.activated['QString'].connect(tableWidget.clear)
         #self.tabela(tableWidget, 2, 2, ['2', 'b'], ['c', 'd'], [['ac', 'ad'], ['bc', 'bd']])
@@ -148,7 +215,7 @@ class QtFunkcije:
         tabele=a.nastej_tabele()
         w=[]
         for i in range(len(tabele)):
-            w.append(self.tabela(database,tabele[i]))
+            w.append(self.tabela_priredba(tabele[i],database))
             Stack.addWidget(w[i])
         return  Stack,a.nastej_tabele()
 
@@ -175,12 +242,15 @@ class QtFunkcije:
         a=SQLFunkcije('FinanceDataBase.db')
         stolpci=a.nastej_stolpce(tabela)
         for i in range(len(stolpci)):
-            b.append(QtWidgets.QLineEdit())
+            b.append(self.izberi_kaj_dodaš(stolpci[i]))
             l.append(QtWidgets.QLabel(stolpci[i]))
             spodaj.addWidget(b[-1])
             zgoraj.addWidget(l[-1])
             l[-1].setMinimumWidth(150)
         return vrstica,b,l
+
+    def izberi_kaj_dodaš(self,stolpec):
+        return QtWidgets.QLineEdit()
 
     def odstrani_vrstico_za_vnos(self,a,c):
         for i in range(len(a)):

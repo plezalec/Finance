@@ -1,0 +1,3 @@
+Izbiraš med  tabelami  in možnostmi filtra vse, niè in številkami elementa(prvi stolpec je vedno številka elementa).
+Èe klikneš dodaj filter se pojavi nov dropbar kjer lahko dodaš nov filter.(ta filter nima možnosti  vse)
+Èe klikneš dodaj stolpec, se možnosti  popravkov onemogoèijo in izbiraš med stolpci  tabele.
