@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QDesktopWidget
 
 from DodajElementTabele import DodajElementTabele
 from DodajPredlogo import DodajPredlogo
-from DodajPrikaz import DodajPrikaz
+from DodajPrikaz import *
 
 class Window(QtWidgets.QWidget,QtFunkcije):#extend QWidgets
 
