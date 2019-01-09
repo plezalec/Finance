@@ -87,5 +87,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     app.setWindowIcon(QtGui.QIcon('slika.png'))
     a_window=Window()
+
+
     a_window.show()
     sys.exit(app.exec_())

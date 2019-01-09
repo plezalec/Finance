@@ -209,6 +209,11 @@ class QtFunkcije:
         pr = a.nastej_tabele()
         return [str]+pr
 
+    def dodaj_stolpce(self,tabela,str):
+        a = SQLFunkcije('FinanceDataBase.db')
+        pr = a.nastej_stolpce(tabela)
+        return [str]+pr
+
     def stacked(self,database):
         Stack=QtWidgets.QStackedWidget()
         a=SQLFunkcije(database)

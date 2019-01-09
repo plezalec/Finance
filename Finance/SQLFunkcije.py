@@ -147,6 +147,7 @@ class Tabela():
         self.parent_stolpec = []
         self.key_stolpec = []
         self.stolpci=[]
+        print('klicana tabela')
 
 
     def beri_podatke(self):
@@ -241,7 +242,13 @@ class Stolpec():
     def vrednosti(self,stolpec_za_prikaz=None):
         self.data = SQLFunkcije(self.database)
         self.vrednosti_stolpca = self.data.preberi_stolpec(self.tabela,self.stolpec)
-        #print(self.vrednosti_stolpca)
+        print('tabela')
+        print(self.tabela)
+
+        print('stolpec')
+        print(self.stolpec)
+        print('vrednosti stolpca')
+        print(self.vrednosti_stolpca)
         if self.parent!=[None]:
             #print('-------------------------------------------')
             #print(self.parent)
@@ -267,6 +274,7 @@ class Stolpec():
                 if self.vrednosti_stolpca[i]!='None':
                     mesto=self.parent_tabela_vrednosti_ID_stolpca.index(self.vrednosti_stolpca[i])
                     self.vrednosti_stolpca[i]=str(self.nove[mesto]).replace('\'','')
+
 
                     #print(self.vrednosti_stolpca)
             #print(self.vrednosti_stolpca[i])
