@@ -11,12 +11,7 @@ from stolpec import Stolpec
 class QtFunkcije(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-        self.setup()
 
-    def setup(self):
-        self.tab=[]
-        self.stevec=0
-        self.polja=[]
     def izpis(self):
         pass
 
@@ -40,15 +35,6 @@ class QtFunkcije(QtWidgets.QWidget):
         if funkcija is not None:
             combo_box.activated[str].connect(funkcija)
         return combo_box
-
-    def poop(self,text):
-        '''
-        Testna funkcija
-        :param text:
-        :return:
-        '''
-        a=self.polje_za_vnos_lastnosti(text,self.layout,'ch')
-        self.layout.addLayout(a)
 
     def h_layout(self,widgets_and_layouts,layout=None):
         '''
@@ -88,6 +74,23 @@ class QtFunkcije(QtWidgets.QWidget):
             layout.addLayout(v_layout)
         return v_layout
 
+    def quit_button(self):
+        btn=QtWidgets.QPushButton('Izhod',self)
+        btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        return btn
+
+class Qt_tabela(QtWidgets.QWidget):
+    def __init__(self,tabela):
+        super().__init__()
+        self.tabela=Tabela
+        self.tab = []
+        self.stevec = 0
+        self.polja = []
+
+    def izpis(self):
+
+        pass
+
     def polje_za_vnos_lastnosti(self,lastnost,attr=None,funkcija=None):
         dodaj_lastnost=Dodaj_lastnost(self.stevec,self)
         self.polja.append(dodaj_lastnost)
@@ -125,7 +128,6 @@ class QtFunkcije(QtWidgets.QWidget):
             a.append(self.polje_za_vnos_lastnosti(i.stolpec_ime,i.attribute))
 
         vlayout=QtWidgets.QVBoxLayout()
-        h_layout=self.h_layout(a,vlayout)
         button=QtWidgets.QPushButton('Zapiši')
         button.clicked.connect(self.zapisi_vrstico)
         vlayout.addWidget(button)
@@ -173,24 +175,6 @@ class QtFunkcije(QtWidgets.QWidget):
             #self.tabela.vrstice[-1].izpis()
         self.row_count+=1
 
-
-
-    def quit_button(self):
-        btn=QtWidgets.QPushButton('Izhod',self)
-        btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
-        return btn
-
-class Qt_tabela(QtWidgets.QWidget):
-    def __init__(self,stolpec_stevilo,qt_funkcije):
-        super().__init__()
-        self.tab = []
-        self.stevec = 0
-        self.polja = []
-
-    def izpis(self):
-
-        pass
-
 class Dodaj_lastnost(QtWidgets.QWidget):
     def __init__(self,stolpec_stevilo,qt_funkcije):
         super().__init__()
@@ -236,9 +220,9 @@ if __name__ == "__main__":
     v.vrstica_vrednosti=[1,2,3,4]
     t.dodaj_vrstico()
 
-
-    c.dodajanje_vrstic(t, b)
-    b.addWidget(c.tabla(t))
+    T=Qt_tabela(t)
+    T.dodajanje_vrstic(t, b)
+    b.addWidget(T.tabla(t))
 
 
     b.addWidget(c.quit_button())
