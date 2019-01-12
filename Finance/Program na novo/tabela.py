@@ -58,15 +58,9 @@ class Tabela():
                 stolpci.append(Stolpec(i,self.tabela_ime,self.baza))
         return stolpci
 
-    def dodaj_vrstico(self,vrstica=None):
-        if vrstica is None:
-            a=True
-            vrstica=Vrstica(self)
-        else:
-            a=False
-        self.vrstice.append(vrstica)
-        if a==True:
-            return vrstica
+    def dodaj_vrstico(self):
+        vrstica=Vrstica(self)
+        return vrstica
 
     def dodaj_stolpec(self,stolpec=None):
 
@@ -114,8 +108,6 @@ class Tabela():
                 m = max(len(str(w)) for w in self.stolpci_imena)
                 k = m - len(str(self.stolpci_imena[i]))
                 s = ' ' * k
-                print(self.stolpci_imena[i])
-                print(self.stolpci[i])
                 print(space+colored(str(self.stolpci_imena[i]),'cyan')+s+puscica+str(self.stolpci[i]))
         else:
             print(space+str(None))
