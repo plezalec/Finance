@@ -118,7 +118,7 @@ class QtFunkcije(QtWidgets.QWidget):
             a.append(self.polje_za_vnos_lastnosti(i.stolpec_ime,i.attribute))
 
         vlayout=QtWidgets.QVBoxLayout()
-        h_layout=self.h_layout(a,vlayout)
+        self.h_layout(a,vlayout)
         button=QtWidgets.QPushButton('Zapiši')
         button.clicked.connect(self.zapisi_vrstico)
         vlayout.addWidget(button)

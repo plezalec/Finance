@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f35e8576-7ce0-4803-883b-db827fd4b1fd" name="Default Changelist" comment="funkcija table">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program na novo/QtFunkcije.py" beforeDir="false" afterPath="$PROJECT_DIR$/Program na novo/QtFunkcije.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program na novo/QtFunkcije1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Program na novo/QtFunkcije1.py" afterDir="false" />
     </list>
@@ -25,35 +24,35 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="19" />
+          <entry key="py" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="19" />
+          <entry key="Python" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2889" />
+          <entry key="py" value="3417" />
           <entry key="txt" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="2889" />
+          <entry key="Python" value="3417" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Program na novo/QtFunkcije.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="164" column="77" selection-start-line="164" selection-start-column="77" selection-end-line="164" selection-end-column="77" />
+            <state relative-caret-position="217">
+              <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="124" selection-end-column="33" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
                 <element signature="e#662#1203#0" />
@@ -61,6 +60,22 @@
                 <element signature="e#1845#2351#0" />
                 <element signature="e#4124#5366#0" />
                 <element signature="e#5925#6052#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Program na novo/QtFunkcije1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-673">
+              <caret line="98" column="4" lean-forward="true" selection-start-line="98" selection-start-column="4" selection-end-line="107" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#693#1234#0" />
+                <element signature="e#1873#2379#0" />
+                <element signature="e#2298#2425#0" />
+                <element signature="e#5616#6051#0" />
               </folding>
             </state>
           </provider>
@@ -115,8 +130,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Program na novo/tabela.py" />
-        <option value="$PROJECT_DIR$/Program na novo/QtFunkcije1.py" />
         <option value="$PROJECT_DIR$/Program na novo/QtFunkcije.py" />
+        <option value="$PROJECT_DIR$/Program na novo/QtFunkcije1.py" />
       </list>
     </option>
   </component>
@@ -170,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.QtFunkcije">
+  <component name="RunManager" selected="Python.QtFunkcije1">
     <configuration name="DodajPrikaz" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Finance" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -234,7 +249,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="glavni_ribji_file" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="QtFunkcije1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Finance" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -242,11 +257,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Program na novo" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/glavni_ribji_file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Program na novo/QtFunkcije1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -277,19 +292,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.glavni_ribji_file" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.QtFunkcije" />
       <item itemvalue="Python.DodajPrikaz" />
       <item itemvalue="Python.QtFunkcije (1)" />
+      <item itemvalue="Python.QtFunkcije1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.QtFunkcije1" />
         <item itemvalue="Python.QtFunkcije" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.QtFunkcije (1)" />
         <item itemvalue="Python.DodajPrikaz" />
-        <item itemvalue="Python.glavni_ribji_file" />
       </list>
     </recent_temporary>
   </component>
@@ -431,23 +446,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Program na novo/QtFunkcije1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
-          <folding>
-            <element signature="e#662#1203#0" />
-            <element signature="e#1476#1982#0" />
-            <element signature="e#2048#2554#0" />
-            <element signature="e#6042#6169#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Program na novo/QtFunkcije.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="164" column="77" selection-start-line="164" selection-start-column="77" selection-end-line="164" selection-end-column="77" />
+        <state relative-caret-position="217">
+          <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="124" selection-end-column="33" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
             <element signature="e#662#1203#0" />
@@ -455,6 +457,20 @@
             <element signature="e#1845#2351#0" />
             <element signature="e#4124#5366#0" />
             <element signature="e#5925#6052#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Program na novo/QtFunkcije1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-673">
+          <caret line="98" column="4" lean-forward="true" selection-start-line="98" selection-start-column="4" selection-end-line="107" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#693#1234#0" />
+            <element signature="e#1873#2379#0" />
+            <element signature="e#2298#2425#0" />
+            <element signature="e#5616#6051#0" />
           </folding>
         </state>
       </provider>
